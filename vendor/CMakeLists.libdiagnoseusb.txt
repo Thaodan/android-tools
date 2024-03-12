@@ -1,0 +1,7 @@
+add_library(libdiagnoseusb STATIC
+	core/diagnose_usb/diagnose_usb.cpp)
+target_include_directories(libdiagnoseusb PUBLIC
+	core/diagnose_usb/include)
+
+target_include_directories(libdiagnoseusb PUBLIC
+	core/include libbase/include)

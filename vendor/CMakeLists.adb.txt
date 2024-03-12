@@ -87,54 +87,6 @@ target_include_directories(libadb_tls_connection_defaults PUBLIC
 	boringssl/include
 	libbase/include)
 
-add_library(liblog STATIC
-	logging/liblog/log_event_list.cpp
-	logging/liblog/log_event_write.cpp
-	logging/liblog/logger_name.cpp
-	logging/liblog/logger_read.cpp
-	logging/liblog/logger_write.cpp
-	logging/liblog/properties.cpp
-	logging/liblog/logprint.cpp)
-
-target_compile_definitions(liblog PRIVATE
-	-DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1)
-target_include_directories(liblog PUBLIC
-	core/include
-	logging/liblog/include
-	core/libcutils/include
-	libbase/include)
-
-add_library(libcutils STATIC
-	core/libcutils/android_get_control_file.cpp
-	core/libcutils/ashmem-host.cpp
-	core/libcutils/canned_fs_config.cpp
-	core/libcutils/config_utils.cpp
-	core/libcutils/fs.cpp
-	core/libcutils/fs_config.cpp
-	core/libcutils/hashmap.cpp
-	core/libcutils/iosched_policy.cpp
-	core/libcutils/load_file.cpp
-	core/libcutils/multiuser.cpp
-	core/libcutils/native_handle.cpp
-	core/libcutils/properties.cpp
-	core/libcutils/record_stream.cpp
-	core/libcutils/socket_inaddr_any_server_unix.cpp
-	core/libcutils/socket_local_client_unix.cpp
-	core/libcutils/socket_local_server_unix.cpp
-	core/libcutils/socket_network_client_unix.cpp
-	core/libcutils/sockets_unix.cpp
-	core/libcutils/sockets.cpp
-	core/libcutils/str_parms.cpp
-	core/libcutils/strlcpy.c
-	core/libcutils/trace-host.cpp
-	core/libcutils/threads.cpp)
-
-target_compile_definitions(libcutils PRIVATE -D_GNU_SOURCE)
-target_include_directories(libcutils PRIVATE
-	logging/liblog/include core/libutils/include)
-target_include_directories(libcutils PUBLIC
-	core/libcutils/include libbase/include)
-
 add_library(libdiagnoseusb STATIC
 	core/diagnose_usb/diagnose_usb.cpp)
 target_include_directories(libdiagnoseusb PUBLIC
