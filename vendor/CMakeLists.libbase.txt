@@ -18,5 +18,5 @@ add_library(libbase STATIC
     libbase/errors_unix.cpp)
 
 target_include_directories(libbase PUBLIC
-	libbase/include core/include)
+	libbase/include core/include logging/liblog/include)
 target_link_libraries(libbase PUBLIC fmt::fmt liblog)
