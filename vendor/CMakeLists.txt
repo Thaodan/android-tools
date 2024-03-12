@@ -27,7 +27,7 @@ add_compile_definitions(_FILE_OFFSET_BITS=64)
 
 set(android-vendored
 	avb
-	adb
+#	adb
 	base
 	core
 	extras
@@ -41,8 +41,8 @@ set(android-vendored
 	f2fs-tools
 	e2fsprogs
 	incremental_delivery
-	fmtlib
-	boringssl)
+	fmtlib)
+#	boringssl)
 
 # XXX: Consider using https://cmake.org/cmake/help/v3.0/module/ExternalProject.html
 
@@ -77,9 +77,9 @@ endif()
 add_subdirectory(fmtlib EXCLUDE_FROM_ALL)
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(libbrotlicommon REQUIRED IMPORTED_TARGET libbrotlicommon)
-pkg_check_modules(libbrotlidec REQUIRED IMPORTED_TARGET libbrotlidec)
-pkg_check_modules(libbrotlienc REQUIRED IMPORTED_TARGET libbrotlienc)
+#pkg_check_modules(libbrotlicommon REQUIRED IMPORTED_TARGET libbrotlicommon)
+#pkg_check_modules(libbrotlidec REQUIRED IMPORTED_TARGET libbrotlidec)
+#pkg_check_modules(libbrotlienc REQUIRED IMPORTED_TARGET libbrotlienc)
 pkg_check_modules(liblz4 REQUIRED IMPORTED_TARGET liblz4)
 pkg_check_modules(libpcre2-8 REQUIRED IMPORTED_TARGET libpcre2-8)
 pkg_check_modules(libusb-1.0 REQUIRED IMPORTED_TARGET libusb-1.0)
@@ -98,7 +98,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 include(CMakeLists.libbase.txt)
 include(CMakeLists.libandroidfw.txt)
-include(CMakeLists.adb.txt)
+#include(CMakeLists.adb.txt)
 include(CMakeLists.sparse.txt)
 include(CMakeLists.fastboot.txt)
 include(CMakeLists.mke2fs.txt)
@@ -110,7 +110,7 @@ include(CMakeLists.avb.txt)
 # Targets which should be installed by `make install`.
 install(TARGETS
 	"${ANDROID_MKE2FS_NAME}"
-	adb
+#	adb
 	append2simg
 	fastboot
 	img2simg
@@ -125,8 +125,8 @@ install(TARGETS
 	DESTINATION bin)
 
 # Install common completion files.
-install(FILES adb/adb.bash RENAME adb DESTINATION "${COMPLETION_COMMON_DIR}")
-install(FILES core/fastboot/fastboot.bash RENAME fastboot DESTINATION "${COMPLETION_COMMON_DIR}")
+#install(FILES adb/adb.bash RENAME adb DESTINATION "${COMPLETION_COMMON_DIR}")
+#install(FILES core/fastboot/fastboot.bash RENAME fastboot DESTINATION "${COMPLETION_COMMON_DIR}")
 
 # Install license files.
 # Disabled for now, see https://github.com/nmeum/android-tools/issues/30#issuecomment-855365636
