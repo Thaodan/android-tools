@@ -153,9 +153,11 @@ if(NOT APPLE)
 		DESTINATION bin)
 endif()
 
-# Install common completion files.
-install(FILES adb/adb.bash RENAME adb DESTINATION "${COMPLETION_COMMON_DIR}")
-install(FILES core/fastboot/fastboot.bash RENAME fastboot DESTINATION "${COMPLETION_COMMON_DIR}")
+if(COMPLETIONS)
+	# Install common completion files.
+	install(FILES adb/adb.bash RENAME adb DESTINATION "${COMPLETION_COMMON_DIR}")
+	install(FILES core/fastboot/fastboot.bash RENAME fastboot DESTINATION "${COMPLETION_COMMON_DIR}")
+endif()
 
 # Install license files.
 # Disabled for now, see https://github.com/nmeum/android-tools/issues/30#issuecomment-855365636
