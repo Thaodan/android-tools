@@ -11,8 +11,11 @@ include(GNUInstallDirs)
 option(ANDROID_TOOLS_PATCH_VENDOR "Patch vendor projects using patches directory" ON)
 
 # Install bash/zsh completion files.
+option(COMPLETIONS "Package zsh/bash completions" ON)
+if(COMPLETIONS)
 set(COMPLETION_COMMON_DIR "${CMAKE_INSTALL_FULL_DATADIR}/android-tools/completions")
 add_subdirectory(completions)
+endif()
 
 # Android provides it's own version of mke2fs which is incompatible with
 # the version shipped by e2fsprogs. To prevent a name clash we install
